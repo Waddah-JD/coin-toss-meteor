@@ -11,6 +11,7 @@ Meteor.methods({
     CoinTossesCollection.insert({
       result,
       createdAt: new Date(),
+      createdBy: Meteor.userId(),
     });
   },
 });
