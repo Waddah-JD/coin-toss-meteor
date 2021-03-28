@@ -4,7 +4,7 @@ import { CoinTossesCollection } from "../api/coinTosses";
 
 export default () => {
   const coinTosses = useTracker(() => {
-    return CoinTossesCollection.find().fetch();
+    return CoinTossesCollection.find({}, { sort: { createdAt: -1 } }).fetch();
   });
 
   return (
