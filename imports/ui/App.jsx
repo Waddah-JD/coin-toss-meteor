@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 
-import CoinTossesHistory from "./CoinTossesHistory";
+import PrivateComponent from "./PrivateComponent";
 import NewCoinToss from "./NewCoinToss";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -24,11 +24,6 @@ export const App = () => {
       </div>
     );
   } else {
-    return (
-      <div>
-        <NewCoinToss />
-        <CoinTossesHistory />
-      </div>
-    );
+    return <PrivateComponent />;
   }
 };
