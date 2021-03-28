@@ -8,8 +8,7 @@ export default () => {
 
   return (
     <div>
-      <h2>New Coin Toss</h2>
-      <button onClick={throwCoin}>throw</button>
+      <button onClick={throwCoin}>Подбросить монетку</button>
     </div>
   );
 };

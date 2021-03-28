@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 
 import PrivateComponent from "./PrivateComponent";
-import NewCoinToss from "./NewCoinToss";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-export const App = () => {
+export default () => {
   const user = useTracker(() => Meteor.user());
   const [shownPage, setShownPage] = useState("SIGN_IN");
 

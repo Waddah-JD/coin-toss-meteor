@@ -17,8 +17,8 @@ export default ({ showSignIn }) => {
 
   return (
     <div>
-      <h2>Sign Up</h2>
-      <button onClick={showSignIn}>Sign In</button>
+      <h2>Регистрация</h2>
+      <button onClick={showSignIn}>Вход</button>
 
       <SignUpForm
         submitButtonLabel="Sign Up"

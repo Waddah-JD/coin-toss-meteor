@@ -9,7 +9,7 @@ export default () => {
 
   return (
     <div>
-      <h2>Coin Toss History</h2>
+      <h2>История подбросов</h2>
       <ul>
         {coinTosses.map(({ _id, result, createdAt }) => (
           <li key={_id}>
