@@ -38,7 +38,7 @@ export default () => {
         ))}
       </ul>
       <Paginator
-        dataCount={totalCoinTosses}
+        totalData={totalCoinTosses}
         pageSize={5}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
