@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
+
 import { CoinTossesCollection } from "../api/coinTosses";
+import Paginator from "./components/Paginator";
 
 export default () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const coinTosses = useTracker(() => {
     return CoinTossesCollection.find(
       { createdBy: Meteor.userId() },
-      { sort: { createdAt: -1 } }
+      { sort: { createdAt: -1 }, limit: 5, skip: (currentPage - 1) * 5 }
     ).fetch();
+  });
+
+  const totalCoinTosses = useTracker(() => {
+    return CoinTossesCollection.find(
+      { createdBy: Meteor.userId() },
+      { sort: { createdAt: -1 } }
+    ).count();
   });
 
   return (
@@ -26,6 +37,12 @@ export default () => {
           </li>
         ))}
       </ul>
+      <Paginator
+        dataCount={totalCoinTosses}
+        pageSize={5}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };
