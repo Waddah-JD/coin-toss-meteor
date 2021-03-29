@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 
+import DATA_CONSTANTS from "../../constants/data";
 import { CoinTossesCollection } from "../api/coinTosses";
 import Paginator from "./components/Paginator";
 
 export default () => {
   const [currentPage, setCurrentPage] = useState(1);
 
+  const pageSize = DATA_CONSTANTS.PAGINATOR_PAGE_SIZE;
+
   const coinTosses = useTracker(() => {
     return CoinTossesCollection.find(
       { createdBy: Meteor.userId() },
-      { sort: { createdAt: -1 }, limit: 5, skip: (currentPage - 1) * 5 }
+      {
+        sort: { createdAt: -1 },
+        limit: pageSize,
+        skip: (currentPage - 1) * pageSize,
+      }
     ).fetch();
   });
 
@@ -39,7 +46,7 @@ export default () => {
       </ul>
       <Paginator
         totalData={totalCoinTosses}
-        pageSize={5}
+        pageSize={pageSize}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
